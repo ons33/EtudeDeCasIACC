@@ -1,0 +1,48 @@
+.beautiful-card {
+  border-radius: 16px;
+  border: none;
+  padding: 12px;
+  background: #ffffff;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.06),
+    0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.beautiful-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.12),
+    0 12px 32px rgba(0,0,0,0.12);
+}
+
+input.form-control {
+  border-radius: 10px;
+  height: 46px;
+  padding-left: 14px;
+  font-size: 15px;
+}
+
+input.form-control:focus {
+  box-shadow: 0 0 8px rgba(0,123,255,0.3);
+}
+
+.list-group-item {
+  border: none;
+  font-size: 15px;
+  padding: 14px 18px;
+}
+
+.list-group {
+  border-radius: 12px;
+}
+
+.badge {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.btn {
+  border-radius: 10px;
+}

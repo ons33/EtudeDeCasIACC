@@ -1,0 +1,87 @@
+<div class="container py-4">
+
+  <h2 class="text-center mb-4 fw-bold">Liste des Suggestions</h2>
+
+ 
+  <div class="row mb-4 g-2">
+    <div class="col-md-6">
+      <input type="text"
+             class="form-control shadow-sm"
+             placeholder="Rechercher par titre..."
+             [(ngModel)]="searchText">
+    </div>
+
+    <div class="col-md-6">
+      <input type="text"
+             class="form-control shadow-sm"
+             placeholder="Rechercher par catégorie..."
+             [(ngModel)]="searchCategory">
+    </div>
+  </div>
+
+  <div class="row g-4">
+
+  
+    <div class="col-md-6" *ngFor="let s of filteredSuggestions">
+      <div class="card beautiful-card h-100">
+
+        <div class="card-body">
+
+          <h5 class="card-title fw-bold">{{ s.title }}</h5>
+
+          <p class="card-text mt-2">{{ s.description }}</p>
+
+          <span class="badge bg-primary me-2">
+            {{ s.category }}
+          </span>
+
+          <span class="badge"
+                [ngClass]="{
+                  'bg-success' : s.status === 'acceptee',
+                  'bg-danger' : s.status === 'refusee',
+                  'bg-warning text-dark' : s.status === 'en_attente'
+                }">
+            {{ s.status }}
+          </span>
+
+          <p class="text-muted mt-2">
+            {{ s.date | date:'mediumDate' }}
+          </p>
+
+         
+          <div *ngIf="s.status !== 'refusee'" class="mt-3">
+            <button class="btn btn-outline-primary btn-sm me-2"
+                    (click)="likeSuggestion(s)">
+              <i class="bi bi-hand-thumbs-up"></i>
+              Like ({{ s.likes }})
+            </button>
+
+            <button class="btn btn-outline-success btn-sm"
+                    (click)="addToFavorites(s)">
+              <i class="bi bi-heart"></i>
+              Ajouter aux favoris
+            </button>
+            <button class="btn btn-primary"
+            [routerLink]="['/suggestions', s.id]">
+      Details
+    </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  
+  <h3 class="mt-5 fw-bold">Vos Favoris</h3>
+
+  <ul class="list-group shadow-sm">
+    <li class="list-group-item"
+        *ngFor="let f of favorites">
+      <strong>{{ f.title }}</strong> – {{ f.category }}
+    </li>
+  </ul>
+
+</div>

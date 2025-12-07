@@ -1,0 +1,13 @@
+<div class="container py-4">
+  <h2>Détails de la Suggestion {{ id }}</h2>
+
+  <p><strong>Titre :</strong> {{ suggestion.title }}</p>
+  <p><strong>Description :</strong> {{ suggestion.description }}</p>
+  <p><strong>Catégorie :</strong> {{ suggestion.category }}</p>
+  <p><strong>Status :</strong> {{ suggestion.status }}</p>
+
+  <button class="btn btn-secondary" (click)="goBack()">
+    Retour à la liste
+  </button>
+  
+</div>
