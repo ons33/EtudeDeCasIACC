@@ -1,7 +1,13 @@
 <div class="container py-4">
 
   <h2 class="text-center mb-4 fw-bold">Liste des Suggestions</h2>
-
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-success"
+            [routerLink]="['/suggestions/new']">
+      <i class="bi bi-plus-circle me-1"></i>
+      + Nouvelle suggestion
+    </button>
+  </div>
  
   <div class="row mb-4 g-2">
     <div class="col-md-6">
@@ -61,12 +67,12 @@
               <i class="bi bi-heart"></i>
               Ajouter aux favoris
             </button>
-            <button class="btn btn-primary"
+         
+          </div>
+   <button class="btn btn-primary"
             [routerLink]="['/suggestions', s.id]">
       Details
     </button>
-          </div>
-
         </div>
 
       </div>

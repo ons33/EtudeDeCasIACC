@@ -7,8 +7,7 @@ import { SuggestionFormComponent } from './suggestion-form/suggestion-form.compo
 const routes: Routes = [
  
   { path: '', component: ListSuggestionComponent },
-    {path:'new', component: SuggestionFormComponent},
-
+  {path:'new', component: SuggestionFormComponent},
   { path: ':id', component: SuggestionDetailsComponent },
 
 ];

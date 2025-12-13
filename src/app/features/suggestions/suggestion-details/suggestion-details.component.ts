@@ -1,35 +1,42 @@
-import { Component } from '@angular/core';
-import { Suggestion } from '../../../models/suggestion';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Suggestion } from '../../../models/suggestion';
+import { SuggestionService } from '../../../services/suggestion.service';
 
 @Component({
   selector: 'app-suggestion-details',
   templateUrl: './suggestion-details.component.html',
   styleUrl: './suggestion-details.component.css'
 })
-export class SuggestionDetailsComponent {
+export class SuggestionDetailsComponent  {
 
-id!: number;
+  id!: number;
   suggestion!: Suggestion;
 
-  suggestions: Suggestion[] = [
-    { id: 1, title: 'Team building', description: '...', category: 'Event', date: new Date(), status: 'acceptee' },
-    { id: 2, title: 'UI Modernisation', description: '...', category: 'Tech', date: new Date(), status: 'en_attente' },
-    { id: 3, title: 'Formation Sécurité', description: '...', category: 'Formation', date: new Date(), status: 'acceptee' }
-  ];
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private suggestionService: SuggestionService
+  ) {}
 
-  constructor(private route: ActivatedRoute,
-              private router: Router) {}
-
-  ngOnInit() {
- this.route.params.subscribe(params => {
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
       this.id = Number(params['id']);
+      this.loadSuggestion();
     });
-    this.suggestion = this.suggestions.find(s => s.id === this.id)!;
   }
 
-  goBack() {
+  loadSuggestion(): void {
+    const result = this.suggestionService.getSuggestionById(this.id);
+    if (result) {
+      this.suggestion = result;
+    } else {
+      // sécurité si l'id n'existe pas
+      this.router.navigate(['/suggestions']);
+    }
+  }
+
+  goBack(): void {
     this.router.navigate(['/suggestions']);
   }
-  
 }
