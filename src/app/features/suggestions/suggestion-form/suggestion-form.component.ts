@@ -73,17 +73,19 @@ export class SuggestionFormComponent  {
   onSubmit(): void {
     if (this.suggestionForm.invalid) return;
 
-    const newSuggestion: Suggestion = {
-      id: 0, // sera défini dans le service
-      title: this.title?.value,
-      description: this.description?.value,
-      category: this.category?.value,
-      date: new Date(),
-      status: 'en attente',
-      likes: 0
-    };
+    // const newSuggestion: Suggestion = {
+    //   id: 0, 
+    //   title: this.title?.value,
+    //   description: this.description?.value,
+    //   category: this.category?.value,
+    //   date: new Date(),
+    //   status: 'en attente',
+    //   likes: 0
+    // };
 
-    this.suggestionService.addSuggestion(newSuggestion);
-    this.router.navigate(['/suggestions']);
+    this.suggestionService.addSuggestion(this.suggestionForm.value).subscribe(() => {
+  this.router.navigate(['/suggestions']);
+});
+
   }
 }

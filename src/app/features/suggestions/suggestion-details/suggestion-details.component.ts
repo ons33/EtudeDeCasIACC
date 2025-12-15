@@ -19,24 +19,33 @@ export class SuggestionDetailsComponent  {
     private suggestionService: SuggestionService
   ) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.id = Number(params['id']);
-      this.loadSuggestion();
+ ngOnInit(): void {
+  this.route.params.subscribe(params => {
+    let id = Number(params['id']);
+    this.suggestionService.getSuggestionById(id).subscribe(data => {
+      if (data) {
+        this.suggestion = data.suggestion;
+        console.log( "dataaaaaaaaaaaaaaaaaaaaaaa",this.suggestion);
+        
+      } else {
+        this.router.navigate(['/suggestions']);
+      }
     });
-  }
+  });
+}
 
-  loadSuggestion(): void {
-    const result = this.suggestionService.getSuggestionById(this.id);
-    if (result) {
-      this.suggestion = result;
-    } else {
-      // sécurité si l'id n'existe pas
-      this.router.navigate(['/suggestions']);
-    }
-  }
 
   goBack(): void {
     this.router.navigate(['/suggestions']);
   }
+
+ deleteSuggestion(id: number): void {
+  if (confirm('Voulez-vous vraiment supprimer cette suggestion ?')) {
+    this.suggestionService.deleteSuggestion(id).subscribe(() => {
+      alert('Suggestion supprimée avec succès !');
+      this.router.navigate(['/suggestions']);
+    });
+  }
+}
+
 }

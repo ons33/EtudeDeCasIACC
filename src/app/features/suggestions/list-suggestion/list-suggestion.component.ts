@@ -17,7 +17,12 @@ export class ListSuggestionComponent {
 
   constructor(private ss: SuggestionService) {}
   ngOnInit(): void {
-     this.suggestions = this.ss.getSuggestions();
+    
+  this.ss.getSuggestions().subscribe(data => {
+    console.log('data',data);
+    
+  this.suggestions = data;
+});
   }
 
   likeSuggestion(s: Suggestion) {
