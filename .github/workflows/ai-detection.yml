@@ -21,6 +21,6 @@ jobs:
         run: npm install axios glob fs-extra
 
       - name: Run AI detection
-        env:
-          OPENAI_API_KEY: ${{ secrets.test }}
         run: node scripts/ai-detect.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
