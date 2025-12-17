@@ -1,0 +1,26 @@
+name: AI Usage Detection (Angular)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ai-detection:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install detection dependencies
+        run: npm install axios glob fs-extra
+
+      - name: Run AI detection
+        env:
+          OPENAI_API_KEY: ${{ secrets.test }}
+        run: node scripts/ai-detect.js
