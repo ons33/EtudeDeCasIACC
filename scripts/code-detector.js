@@ -1,5 +1,5 @@
-import glob from 'glob';
-import fs from 'fs-extra';
+const glob = require('glob');
+const fs = require('fs-extra');
 
 const files = glob.sync('src/**/*.{ts,html}');
 
@@ -17,7 +17,7 @@ console.log(`AI detection score: ${score}`);
 
 if (score > 30) {
   console.error('AI usage threshold exceeded');
-  process.exit(1); // ❌ FAIL PIPELINE
+  process.exit(1);
 }
 
-process.exit(0); // ✅ PASS
+process.exit(0);
