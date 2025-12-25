@@ -1,0 +1,94 @@
+<div class="card p-4">
+  <h3>Modifier la suggestion</h3>
+
+  <form [formGroup]="suggestionForm" (ngSubmit)="update()">
+
+    <!-- Titre -->
+    <div class="mb-3">
+      <label for="title">Titre</label>
+      <input
+        id="title"
+        type="text"
+        class="form-control"
+        formControlName="title">
+
+      <div *ngIf="suggestionForm.get('title')?.touched && suggestionForm.get('title')?.invalid"
+           class="text-danger">
+        Champ obligatoire
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        rows="4"
+        class="form-control"
+        formControlName="description">
+      </textarea>
+
+      <div *ngIf="suggestionForm.get('description')?.touched && suggestionForm.get('description')?.invalid"
+           class="text-danger">
+        Champ obligatoire
+      </div>
+    </div>
+
+    <!-- Catégorie -->
+    <div class="mb-3">
+      <label for="category">Catégorie</label>
+      <select
+        id="category"
+        class="form-select"
+        formControlName="category">
+        <option value="">-- Sélectionner --</option>
+        <option *ngFor="let cat of categories" [value]="cat">
+          {{ cat }}
+        </option>
+      </select>
+
+      <div *ngIf="suggestionForm.get('category')?.touched && suggestionForm.get('category')?.invalid"
+           class="text-danger">
+        Champ obligatoire
+      </div>
+    </div>
+
+    <!-- Date -->
+    <div class="mb-3">
+      <label>Date</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="date"
+        readonly>
+    </div>
+
+    <!-- Status -->
+    <div class="mb-3">
+      <label>Status</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="status"
+        readonly>
+    </div>
+
+    <!-- Boutons -->
+    <div class="d-flex gap-2">
+      <button
+        type="submit"
+        class="btn btn-warning"
+        [disabled]="suggestionForm.invalid">
+        Modifier
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        routerLink="/suggestions">
+        Annuler
+      </button>
+    </div>
+
+  </form>
+</div>

@@ -22,10 +22,13 @@ export class SuggestionService {
      return this.http.get<any>(this.suggestionUrl + '/' + id );
   }
 ////////////////////////////// (`${this.suggestionUrl}/${id}`);
+
   updateSuggestion(id: number, suggestion: Suggestion) {
     return this.http.put<Suggestion>(this.suggestionUrl + '/' + id,suggestion,  );
   }
   deleteSuggestion(id: number) {
+    console.log(id);
+    
     return this.http.delete(this.suggestionUrl + '/' + id);
   }
 }

@@ -4,11 +4,14 @@ import { SuggestionsComponent } from './suggestions.component';
 import { SuggestionDetailsComponent } from './suggestion-details/suggestion-details.component';
 import { ListSuggestionComponent } from './list-suggestion/list-suggestion.component';
 import { SuggestionFormComponent } from './suggestion-form/suggestion-form.component';
+import { SuggestionUpdateComponent } from './suggestion-update/suggestion-update.component';
 const routes: Routes = [
  
   { path: '', component: ListSuggestionComponent },
   {path:'new', component: SuggestionFormComponent},
+  { path: 'edit/:id', component: SuggestionUpdateComponent },
   { path: ':id', component: SuggestionDetailsComponent },
+
 
 ];
 

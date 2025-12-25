@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { ListSuggestionComponent } from './features/suggestions/list-suggestion/list-suggestion.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './core/home/home.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
 import {  provideHttpClient } from '@angular/common/http';
+import { SuggestionUpdateComponent } from './features/suggestions/suggestion-update/suggestion-update.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,14 @@ import {  provideHttpClient } from '@angular/common/http';
     FooterComponent,
     ListSuggestionComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    SuggestionUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule
     
     
   ],

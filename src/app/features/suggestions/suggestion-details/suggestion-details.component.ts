@@ -41,6 +41,7 @@ export class SuggestionDetailsComponent  {
 
  deleteSuggestion(id: number): void {
   if (confirm('Voulez-vous vraiment supprimer cette suggestion ?')) {
+  
     this.suggestionService.deleteSuggestion(id).subscribe(() => {
       alert('Suggestion supprimée avec succès !');
       this.router.navigate(['/suggestions']);

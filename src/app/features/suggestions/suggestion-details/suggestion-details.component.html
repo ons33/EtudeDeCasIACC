@@ -9,7 +9,10 @@
   <button class="btn btn-danger" (click)="deleteSuggestion( suggestion.id )">
     Supprimer
   </button>
-
+<button class="btn btn-warning"
+        [routerLink]="['/suggestions/edit', suggestion.id]">
+  Modifier
+</button>
   <button class="btn btn-secondary" (click)="goBack()">
     Retour à la liste
   </button>
